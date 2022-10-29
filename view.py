@@ -1,13 +1,11 @@
-from struct import calcsize
-
-import telebot.types
+import telebot
 from telebot.types import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 kill_menu = ReplyKeyboardRemove(selective=False)
 
-menu_start = InlineKeyboardMarkup(True)
+
 but_game = InlineKeyboardButton(text="Поиграем", callback_data="game")
-but_exit = InlineKeyboardButton(text="Выход", callback_data="exit")
+but_exit = InlineKeyboardButton(text="Посчитаем", callback_data="calc")
 menu_start = InlineKeyboardMarkup(row_width=2)
 menu_start.add(but_game, but_exit)
 
