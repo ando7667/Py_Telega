@@ -32,7 +32,7 @@ def data():
 @bot.callback_query_handler(func=lambda call: True)
 def query_handler(call):
     st1 = f" - id:{call.from_user.id} {call.from_user.first_name} {call.from_user.last_name} - "
-    numb = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    numb = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
     match call.data:
         case 'calc':
             lg.logger_history(st1, "Запуск калькулятора", "")
@@ -65,7 +65,7 @@ def query_handler(call):
             gm.main(call=call, flag=0, md=2)
         case a if a in numb:
             print(f"call.data= {call.data}")
-            gm.player_input(call, call.data)
+            gm.gm_step(call, call.data)
         case 'win':
             bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
 
