@@ -38,6 +38,18 @@ def query_handler(call):
             lg.logger_history(st1, "Запуск калькулятора", "")
             bot.send_message(call.message.chat.id, text="Калькулятор")
             bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
+            bot.send_message(call.message.chat.id, text="Задайте режим работы")
+            bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=view.inline_menu_mcalc)
+        case 'calc_number':
+            lg.logger_history(st1, "Калькулятор, режим работы с обычными числами", "")
+            bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
+            bot.send_message(call.message.chat.id, text="Выбирите противника")
+            bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=view.inline_menu_calc_n)
+        case 'calc_complex':
+            lg.logger_history(st1, "Калькулятор, режим работы с комплексными числами", "")
+            bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
+            bot.send_message(call.message.chat.id, text="Выбирите противника")
+            bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=view.inline_menu_calc_c)
         case 'game':
             lg.logger_history(st1, "Вход в Игру XvsO", "")
             bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
