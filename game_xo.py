@@ -77,35 +77,30 @@ def gm_step(call, inp):
                 board[inp - 1] = kr if player == 1 else nul
                 count += 1
                 draw_board(call)
+                if count > 3:
+                    winp = if_win()
+                    if winp:
+                        status_w = 1
+                        print_win(call)
+                    else:
+                        pass
                 if count < 9:
-                    if count > 3:
-                        winp = if_win()
-                        if winp:
-                            status_w = 1
-                            print_win(call)
-                        else:
-                            pass
                     if not status_w:
                         player = 1 if player == 2 else 2
                         print_player(call)
                         if player == 2 and mode == 2:
-                            time.sleep(2)
+                            time.sleep(1)
                             inp = input_bot()
                             if inp:
                                 gm_step(call, inp)
-                            else:
-                                pass
-                        else:
-                            pass
                 else:
+
                     print_end(call)
             else:
                 print("Эта клетка уже занята")
                 bot.send_message(call.message.chat.id, text=f"Эта клетка уже занята {chr(129300)}")
         else:
             print_end(call)
-    else:
-        pass
 
 
 def input_bot():
